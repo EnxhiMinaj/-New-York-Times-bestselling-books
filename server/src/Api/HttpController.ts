@@ -1,7 +1,7 @@
 import express, { NextFunction, Response, Request } from 'express';
 import fs from 'fs';
 import { Config } from '../Config';
-
+import { NewYorkTimesAPI } from './NewYorkTimesAPI';
 /**
  * Http controller
  * Responsible of handling HTTP communication with the service
@@ -100,6 +100,8 @@ export class HttpController {
         app.get("/api", (req, res) => {
             res.json({ message: "Hello from server!" });
         });
+        // routes
+        new NewYorkTimesAPI().route(app);
 
         return app;
     }
